@@ -91,7 +91,7 @@ $(document).ready(function() {
         data.heroTrait = heroTraits[raw_heroTrait];
 
         // Weapon trait
-        var raw_weaponTrait = document.querySelector("div.col.weapon-selection > div:nth-child(2) > div > div > div.glow-container > div.trait > span").className;
+        var raw_weaponTrait = document.querySelector("div.col.weapon-selection > div > div.weapon-icon-wrapper > div > div.glow-container > div.trait > span").className;
         data.weaponTrait = weaponTraits[raw_weaponTrait];
 
         console.log("here");
@@ -100,7 +100,7 @@ $(document).ready(function() {
 
         for (let i = 1; i <= 3; i++){
 
-            let raw_stat = document.querySelector(`div.col.weapon-selection > div:nth-child(2) > div > div > div.stats > div:nth-child(${i}) > span:nth-child(2)`);
+            let raw_stat = document.querySelector(`div.col.weapon-selection > div > div.weapon-icon-wrapper > div > div.stats > div:nth-child(${i}) > span:nth-child(2)`);
 
             if (raw_stat){
                 data[`stat${i}Trait`] = weaponStatTraits[raw_stat.className];
@@ -117,10 +117,10 @@ $(document).ready(function() {
         // Enemies stats
         for (let i = 1; i <= 4; i++){
 
-            let raw_enemyTrait = document.querySelector(`div.enemy-list > div:nth-child(${i}) > div > div.enemy-character > div.encounter-element > span`).className;
+            let raw_enemyTrait = document.querySelector(`div.combat-enemy-container > div.row.mb-3.enemy-container > div:nth-child(${i+1}) > div > div.enemy-character > div.encounter-element > span`).className;
             data[`enemy${i}Trait`] = enemyTraits[raw_enemyTrait];
 
-            let raw_enemyPower = document.querySelector(`div.enemy-list > div:nth-child(${i}) > div > div.enemy-character > div.encounter-power`).innerText;
+            let raw_enemyPower = document.querySelector(`div.combat-enemy-container > div.row.mb-3.enemy-container > div:nth-child(${i+1}) > div > div.enemy-character > div.encounter-power`).innerText;
             data[`enemy${i}`] = parseInt(raw_enemyPower.replace(/[^0-9.]/g, ''));
 
         }
@@ -214,10 +214,10 @@ $(document).ready(function() {
 
 
 
-        document.querySelector("div.enemy-list > div:nth-child(1) > div > div.victory-chance").innerText = ' ' + ((won1/loop)*100).toFixed(2) + '%'
-        document.querySelector("div.enemy-list > div:nth-child(2) > div > div.victory-chance").innerText = ' ' + ((won2/loop)*100).toFixed(2) + '%'
-        document.querySelector("div.enemy-list > div:nth-child(3) > div > div.victory-chance").innerText = ' ' + ((won3/loop)*100).toFixed(2) + '%'
-        document.querySelector("div.enemy-list > div:nth-child(4) > div > div.victory-chance").innerText = ' ' + ((won4/loop)*100).toFixed(2) + '%'
+        document.querySelector(`div.combat-enemy-container > div.enemy-container > div:nth-child(2) > div > div.victory-chance`).innerText = ' ' + ((won1/loop)*100).toFixed(2) + '%'
+        document.querySelector(`div.combat-enemy-container > div.enemy-container > div:nth-child(3) > div > div.victory-chance`).innerText = ' ' + ((won2/loop)*100).toFixed(2) + '%'
+        document.querySelector(`div.combat-enemy-container > div.enemy-container > div:nth-child(4) > div > div.victory-chance`).innerText = ' ' + ((won3/loop)*100).toFixed(2) + '%'
+        document.querySelector(`div.combat-enemy-container > div.enemy-container > div:nth-child(5) > div > div.victory-chance`).innerText = ' ' + ((won4/loop)*100).toFixed(2) + '%'
     }
 
     function getWeaponPower(weaponTrait, stat1, trait1, stat2, trait2, stat3, trait3) {
